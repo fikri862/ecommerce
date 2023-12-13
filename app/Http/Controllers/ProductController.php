@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Stmt\Return_;
 
 class ProductController extends Controller
 {
@@ -74,5 +75,10 @@ class ProductController extends Controller
         ]);
 
         return Redirect::route('show_product', $product);
+    }
+
+    public function delete_product (Product $product) {
+        $product->delete();
+        return Redirect::route('index_product');
     }
 }
