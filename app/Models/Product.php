@@ -18,7 +18,7 @@ class Product extends Model
     ];
 
     public function transactions () {
-        return $this->belongsTo(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 
     public function carts () {
