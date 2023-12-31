@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,12 +22,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Redirect::route('index_product');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/product/create', [ProductController::class, 'create_product'])->name('create_product');
 Route::post('/product/create', [ProductController::class, 'store_product'])->name('store_product');
 Route::get('/product', [ProductController::class, 'index_product'])->name('index_product');
